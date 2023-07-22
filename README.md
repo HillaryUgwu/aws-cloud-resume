@@ -34,3 +34,23 @@
     }
 }
 ```
+
+# Installing the AWS SAM CLI on Linux
+1. Download the [AWS SAM CLI .zip](https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip) file to a directory of your choice.
+2. Unzip the installation files into a directory of your choice. The following is an example, using the sam-installation subdirectory.
+```
+unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
+```
+3. Install the AWS SAM CLI by running the install executable. This executable is located in the directory used in the previous step. The following is an example, using the sam-installation subdirectory:
+```
+$ sudo ./sam-installation/install
+```
+
+4. Verify the installation.
+```
+$ sam --version
+```
+On successful installation, you should see output like the following:
+```
+ SAM CLI, version 1.58.0
+```
