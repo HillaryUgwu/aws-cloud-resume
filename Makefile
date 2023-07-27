@@ -8,3 +8,9 @@ deploy-infra:
 
 deploy-site:
 	aws s3 sync ./sitedata s3://www.ohary37.com
+
+invoke-local:
+	sam build && sam local invoke countFunction
+
+invoke-remote:
+	sam build && sam remote invoke countFunction

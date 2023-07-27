@@ -7,7 +7,7 @@ from CustomEncoder import dec2Float
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-dynamodbTableName = "guestCount"
+dynamodbTableName = "cloud-resume-challenge"
 dynamodb = boto3.resource("dynamodb")
 table = dynamodb.Table(dynamodbTableName)
 
@@ -15,19 +15,12 @@ table = dynamodb.Table(dynamodbTableName)
 def lambda_handler(event, context):
     """Main lambda function handler"""
 
-    print(f"Event: {event}")
-    print(f"Context: {context}")
-
     guest_id = "guest"
 
     result = get_count(guest_id)
+    current_visitor_count = int(float(result["body"])) + 1
 
-    if result["body"]:
-        current_visitor_count = int(float(result["body"])) + 1
-    else:
-        current_visitor_count = 1
-
-    response = updateCount(guest_id, current_visitor_count)
+    response = update_count(guest_id, current_visitor_count)
 
     return response
 
@@ -35,18 +28,19 @@ def lambda_handler(event, context):
 def get_count(guest_id):
     """Retrieve current visitors count from DB"""
     try:
-        response = table.get_item(Key={"guest": guest_id})
+        response = table.get_item(Key={"guest_id": guest_id})
         if "Item" in response:
-            return buildResponse(200, response["Item"]["counts"])
-        return buildResponse(404, {"Message": "guest_id: %s not found" % guest_id})
+            return build_response(200, response["Item"]["counts"])
+        return build_response(200, 0)
     except Exception as err:
         logger.exception("Unable to retrieve item from table due to: %s", err)
 
 
-def updateCount(guest_id, current_visitor_count):
+def update_count(guest_id, current_visitor_count):
+    """Update DB with the current visitors count"""
     try:
         response = table.update_item(
-            Key={"guest": guest_id},
+            Key={"guest_id": guest_id},
             UpdateExpression="set counts = :value",
             ExpressionAttributeValues={":value": current_visitor_count},
         )
@@ -56,17 +50,16 @@ def updateCount(guest_id, current_visitor_count):
             "count": current_visitor_count,
             "UpdateAttributes": response,
         }
-        return buildResponse(200, body)
-    except:
-        logger.exception(
-            "Some custom error handling. Some serious logging going on out here!!"
-        )
+        return build_response(200, body)
+    except Exception as err:
+        logger.exception("Unable to update the table due to: %s", err)
 
 
-def buildResponse(statusCode, body=None):
+def build_response(status_code, body=None):
+    """Build custom response for specific requests"""
 
     response = {
-        "statusCode": statusCode,
+        "statusCode": status_code,
         "headers": {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
