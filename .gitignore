@@ -2,9 +2,6 @@
 *.autosave
 *.mat
 *.l
-*.html
-*.css
-*.js
 *.gif
 *.slxc
 *.csv
@@ -13,13 +10,10 @@
 *.xlsx
 *.fig
 *.png
-*.txt
 *.m~
-*.json
 *.lic
 *.xml
 *.crt
-*.yaml
 
 
 # Created by https://www.gitignore.io/api/osx,linux,python,windows,pycharm,visualstudiocode
@@ -265,3 +259,4 @@ $RECYCLE.BIN/
 */build/*
 
 # End of https://www.gitignore.io/api/osx,linux,python,windows,pycharm,visualstudiocode
+src/frontend/output.json

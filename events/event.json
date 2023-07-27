@@ -1,0 +1,11 @@
+{
+  "body": "{\"message\": \"Resume visitor count\"}",
+  "resource": "/resume",
+  "path": "/resume",
+  "httpMethod": "GET",
+  "headers": {
+    "Cache-Control": "max-age=0",
+    "CloudFront-Forwarded-Proto": "https",
+    "CloudFront-Is-Desktop-Viewer": "true"
+  }
+}

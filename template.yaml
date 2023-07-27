@@ -1,0 +1,145 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  cloudResume
+
+  Sample SAM Template for cloudResume
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 5
+    # MemorySize: 128
+Parameters:
+  HostedZoneId:
+    Type: AWS::SSM::Parameter::Value<String>
+    Description: "R53 hosted zone ID used for the domain"
+    Default: /HostedZoneId
+  AcmCertificateArn:
+    Type: AWS::SSM::Parameter::Value<String>
+    Description: "ACM Certificate arn from parameter store"
+    Default: /AcmCertificateArn
+
+Resources:
+  countFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/backend/
+      Handler: app.lambda_handler
+      Runtime: python3.10
+      Architectures:
+        - x86_64
+      Policies:
+        # Give Lambda full access to DynamoDB
+        - AmazonDynamoDBFullAccess
+        # - Version: 2012-10-17
+        #   Statement:
+        #     - Effect: Allow
+        #       Action: dynamodb:GetItem
+        #       Resource: !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table//cloud-resume-challenge"
+      Events:
+        cloudResume:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /resume
+            Method: get
+  
+  ResumeWebsite:
+    Type: AWS::S3::Bucket
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicPolicy: false
+        RestrictPublicBuckets: false
+      WebsiteConfiguration:
+        IndexDocument: index.html
+      BucketName: www.ohary37.com
+  
+  S3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      PolicyDocument:
+        Id: MyBucketPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: "*"
+            Action: "S3:GetObject"
+            Resource: !Join
+              - ""
+              - - "arn:aws:s3:::"
+                - !Ref ResumeWebsite
+                - /*
+      Bucket: !Ref ResumeWebsite
+
+  DynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cloud-resume-challenge
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: "guest_id"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "guest_id"
+          KeyType: "HASH"
+
+  MyRoute53Record:
+    Type: "AWS::Route53::RecordSetGroup"
+    Properties:
+      HostedZoneId: !Ref HostedZoneId
+      RecordSets:
+        - Name: !Ref ResumeWebsite
+          Type: A
+          AliasTarget:
+            HostedZoneId: Z2FDTNDATAQYW2 #Native to cloudfront
+            DNSName: !GetAtt MyDistribution.DomainName
+
+  MyDistribution:
+    Type: "AWS::CloudFront::Distribution"
+    Properties:
+      DistributionConfig:
+        Aliases: 
+          - !Ref ResumeWebsite
+          - !Join
+              - ""
+              - - !Select [1, !Split [".", !Ref ResumeWebsite]]
+                - "."
+                - !Select [2, !Split [".", !Ref ResumeWebsite]]
+        Comment: "Cloudfront distribution for serverless website"
+        ViewerCertificate:
+          AcmCertificateArn: !Ref AcmCertificateArn
+          MinimumProtocolVersion: TLSv1.1_2016
+          SslSupportMethod: sni-only
+        DefaultCacheBehavior:
+          ViewerProtocolPolicy: redirect-to-https
+          # TargetOriginId: !Sub "${ResumeWebsite}.s3-website-${AWS::Region}.amazonaws.com"
+          TargetOriginId: !Select [2, !Split ["/", !GetAtt ResumeWebsite.WebsiteURL]]
+          DefaultTTL: 0
+          MinTTL: 0
+          MaxTTL: 0
+          ForwardedValues:
+            QueryString: false
+        Origins:
+          # - DomainName: !Sub "${ResumeWebsite}.s3-website-${AWS::Region}.amazonaws.com"
+          - DomainName: !Select [2, !Split ["/", !GetAtt ResumeWebsite.WebsiteURL]]
+            Id: !Sub "${ResumeWebsite}.s3-website-${AWS::Region}.amazonaws.com"
+            CustomOriginConfig:
+              OriginProtocolPolicy: http-only
+        Enabled: "true"
+        DefaultRootObject: index.html
+    
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  cloudResumeApi:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/resume/"
+  countFunction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt countFunction.Arn
+  countFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt countFunctionRole.Arn
