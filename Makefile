@@ -5,7 +5,9 @@ build:
 
 deploy-infra:
 	sam build && sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
-# sam list stack-outputs --stack-name cloudResume > ./src/frontend/output.json
+
+list-output:
+	sam list stack-outputs --stack-name cloudResume --output json > ./src/frontend/output.json
 
 deploy-site:
 	aws s3 sync ./src/frontend s3://www.ohary37.com
