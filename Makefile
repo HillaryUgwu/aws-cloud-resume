@@ -10,6 +10,7 @@ list-output:
 	sam list stack-outputs --stack-name cloudResume --output json > ./src/frontend/output.json
 
 deploy-site:
+	sam list stack-outputs --stack-name cloudResume --output json > ./src/frontend/output.json
 	aws s3 sync ./src/frontend s3://www.ohary37.com
 
 invoke-local:

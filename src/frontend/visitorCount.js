@@ -1,29 +1,21 @@
 
 // load AWS SAM Stack Outputs and grab the APIGateway endpoint URL
+const apiURL = "./output.json";
 
-const apiURL = require('./output.json');
-console.log(apiURL[1]['OutputValue']);
+// Defining async get api function
+async function getapi(url, show) {
 
-// function Func() {
-//     fetch("./output.json")
-//         .then((res) => {
-//             return res.json();
-//         })
-//         .then((data) => console.log(data));
-// }
+    // Storing response
+    const response = await fetch(url);
 
-// fetch("https://juod82fzgl.execute-api.us-east-1.amazonaws.com/Prod/resume/")
-//     .then(response => response.json())
-//     .then(json => console.log(json));
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log(data);
+    if (show) {
+        document.getElementById('count').innerHTML = data['count'];
+    }
+    return data;
+}
 
-// $.getJSON("output.json", function (json) {
-//     console.log(json); // this will show the info it in firebug console
-// });
-
-
-// var apiURL = "https://pemsp3t3qg.execute-api.us-east-1.amazonaws.com/dev/guestcount";
-fetch(apiURL[1]['OutputValue'])
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('count').innerHTML = data['count']
-    })
+let url = await getapi(apiURL, false);
+let res = await getapi(url[1]["OutputValue"], true);
