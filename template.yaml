@@ -31,7 +31,8 @@ Resources:
         - x86_64
       Policies:
         # Give Lambda full access to DynamoDB
-        - AmazonDynamoDBFullAccess
+        - DynamoDBCrudPolicy:
+            TableName: cloud-resume-challenge
         # - Version: 2012-10-17
         #   Statement:
         #     - Effect: Allow

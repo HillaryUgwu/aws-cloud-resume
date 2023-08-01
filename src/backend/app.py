@@ -1,3 +1,5 @@
+#! /home/gitpod/.pyenv/shims/python
+
 """Lamda function to interact with dynamoDB and update visitor counts accordingly"""
 import json
 import logging
