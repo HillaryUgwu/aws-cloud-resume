@@ -4,7 +4,7 @@
 import json
 import logging
 import boto3
-from CustomEncoder import dec2Float
+from .CustomEncoder import dec2Float
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -14,7 +14,7 @@ dynamodb = boto3.resource("dynamodb")
 table = dynamodb.Table(dynamodbTableName)
 
 
-def lambda_handler(event, context):
+def lambda_handler(event=None, context=None):
     """Main lambda function handler"""
 
     guest_id = "guest"
