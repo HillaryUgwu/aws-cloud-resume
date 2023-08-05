@@ -6,8 +6,9 @@ on:
 
 env:
   # PYTHON_VERSION: 3.10
-  BACKEND_PATH: src/backend
-  FRONTEND_PATH: src/frontend
+  # BACKEND_PATH: src/backend
+  TEST_PATH: tests/unit
+  # FRONTEND_PATH: src/frontend
   AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
@@ -35,6 +36,6 @@ jobs:
       #   run: |
       #     pytest -vvv --capture=tee-sys --cov=${{ env.BACKEND_PATH }}
       - name: test lambda-function
-        run: cd tests/unit && pytest -k test -v ./ && cd ../../
-        # run: |
-        #   pytest -vvv --capture=tee-sys --cov=${{ env.BACKEND_PATH }}
+        # run: cd tests/unit && pytest -k test -v ./ && cd ../../
+        run: |
+          pytest -vvv --capture=tee-sys --cov=${{ env.TEST_PATH }}
