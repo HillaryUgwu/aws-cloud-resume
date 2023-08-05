@@ -1,0 +1,37 @@
+name: main
+on:
+  push
+    branches:
+      - main
+
+env:
+  PYTHON_VERSION: 3.10
+  BACKEND_PATH: src/backend
+  FRONTEND_PATH: src/frontend
+  # DEPLOYMENT_REGION: eu-west-1
+  # TF_LOG: INFO
+  # STATE_S3_BUCKET: ${{ secrets.BUCKET_TF_STATE }}
+  # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  unit-test-backend:
+    runs-on: ubuntu-latest
+    # timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov coverage boto3
+      - name: Run pytest with coverage report
+        run: |
+          pytest -vvv --capture=tee-sys --cov=${{ env.BACKEND_PATH }}
+      - name: test lambda-function
+        run: cd tests/unit && pytest -k test -v ./ && cd ../../
+        # run: |
+        #   pytest -vvv --capture=tee-sys --cov=${{ env.BACKEND_PATH }}
