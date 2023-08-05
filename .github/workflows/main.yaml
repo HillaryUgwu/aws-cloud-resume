@@ -5,10 +5,10 @@ on:
       - main
 
 env:
-  PYTHON_VERSION: 3.10
+  # PYTHON_VERSION: 3.10
   BACKEND_PATH: src/backend
   FRONTEND_PATH: src/frontend
-  # DEPLOYMENT_REGION: eu-west-1
+  # DEPLOYMENT_REGION: eu-east-1
   # TF_LOG: INFO
   # STATE_S3_BUCKET: ${{ secrets.BUCKET_TF_STATE }}
   # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
