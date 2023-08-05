@@ -4,14 +4,14 @@ on:
     branches:
       - main
 
-env:
-  # PYTHON_VERSION: 3.10
-  BACKEND_PATH: src/backend
-  FRONTEND_PATH: src/frontend
-  AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+# env:
+#   # PYTHON_VERSION: 3.10
+#   BACKEND_PATH: src/backend
+#   FRONTEND_PATH: src/frontend
+#   AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+#   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#   # AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+#   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   # TF_LOG: INFO
   # STATE_S3_BUCKET: ${{ secrets.BUCKET_TF_STATE }}
   
@@ -36,10 +36,9 @@ jobs:
       #     pytest -vvv --capture=tee-sys --cov=${{ env.BACKEND_PATH }}
       - name: test lambda-function
         env:
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
         run: cd tests/unit && pytest -k test -v ./ && cd ../../
         # run: |
         #   pytest -vvv --capture=tee-sys --cov=${{ env.BACKEND_PATH }}
