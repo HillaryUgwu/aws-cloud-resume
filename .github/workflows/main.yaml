@@ -8,7 +8,7 @@ env:
   # PYTHON_VERSION: 3.10
   BACKEND_PATH: src/backend
   FRONTEND_PATH: src/frontend
-  DEPLOYMENT_REGION: eu-east-1
+  DEPLOYMENT_REGION: us-east-1
   # TF_LOG: INFO
   # STATE_S3_BUCKET: ${{ secrets.BUCKET_TF_STATE }}
   # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -33,7 +33,7 @@ jobs:
           pytest -vvv --capture=tee-sys --cov=${{ env.BACKEND_PATH }}
       - name: test lambda-function
         env:
-          AWS_DEFAULT_REGION: eu-east-1
+          AWS_DEFAULT_REGION: us-east-1
           # AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
         run: cd tests/unit && pytest -k test -v ./ && cd ../../
         # run: |
