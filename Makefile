@@ -11,10 +11,13 @@ list-output:
 
 deploy-site:
 	sam list stack-outputs --stack-name cloudResume --output json > ./src/frontend/output.json
-	aws s3 sync ./src/frontend s3://www.ohary37.com
+	aws s3 sync ./src/frontend s3://ohary37.com
 
 invoke-local:
 	sam build && sam local invoke countFunction
 
 invoke-remote:
 	sam build && sam remote invoke countFunction
+
+teardown:
+	sam delete --stack-name cloudResume --no-prompts

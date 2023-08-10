@@ -19,6 +19,10 @@ Parameters:
     Type: AWS::SSM::Parameter::Value<String>
     Description: "ACM Certificate arn from parameter store"
     Default: /AcmCertificateArn
+  WebDomainName:
+    Type: AWS::SSM::Parameter::Value<String>
+    Description: "Naked domain name of the website"
+    Default: /WebDomainName
 
 Resources:
   countFunction:
@@ -30,14 +34,8 @@ Resources:
       Architectures:
         - x86_64
       Policies:
-        # Give Lambda full access to DynamoDB
         - DynamoDBCrudPolicy:
             TableName: cloud-resume-challenge
-        # - Version: 2012-10-17
-        #   Statement:
-        #     - Effect: Allow
-        #       Action: dynamodb:GetItem
-        #       Resource: !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table//cloud-resume-challenge"
       Events:
         cloudResume:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -53,7 +51,10 @@ Resources:
         RestrictPublicBuckets: false
       WebsiteConfiguration:
         IndexDocument: index.html
-      BucketName: www.ohary37.com
+        # RedirectAllRequestsTo:
+        #   HostName: !Join [".", ["www", !Ref WebDomainName]]
+        #   Protocol: https
+      BucketName: !Ref WebDomainName
 
   S3BucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -101,12 +102,8 @@ Resources:
     Properties:
       DistributionConfig:
         Aliases:
-          - !Ref ResumeWebsite
-          - !Join
-            - ""
-            - - !Select [1, !Split [".", !Ref ResumeWebsite]]
-              - "."
-              - !Select [2, !Split [".", !Ref ResumeWebsite]]
+          - !Ref WebDomainName
+          - !Join [".", ["www", !Ref WebDomainName]]
         Comment: "Cloudfront distribution for serverless website"
         ViewerCertificate:
           AcmCertificateArn: !Ref AcmCertificateArn
@@ -114,7 +111,6 @@ Resources:
           SslSupportMethod: sni-only
         DefaultCacheBehavior:
           ViewerProtocolPolicy: redirect-to-https
-          # TargetOriginId: !Sub "${ResumeWebsite}.s3-website-${AWS::Region}.amazonaws.com"
           TargetOriginId:
             !Select [2, !Split ["/", !GetAtt ResumeWebsite.WebsiteURL]]
           DefaultTTL: 0
@@ -123,7 +119,6 @@ Resources:
           ForwardedValues:
             QueryString: false
         Origins:
-          # - DomainName: !Sub "${ResumeWebsite}.s3-website-${AWS::Region}.amazonaws.com"
           - DomainName:
               !Select [2, !Split ["/", !GetAtt ResumeWebsite.WebsiteURL]]
             Id: !Sub "${ResumeWebsite}.s3-website-${AWS::Region}.amazonaws.com"
