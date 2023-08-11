@@ -3,8 +3,14 @@
 """Lamda function to interact with dynamoDB and update visitor counts accordingly"""
 import json
 import logging
+import os
+import sys
 import boto3
-from .CustomEncoder import dec2Float
+
+file_dir = os.path.dirname(__file__)
+sys.path.append(file_dir)
+
+from CustomEncoder import dec2Float
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
