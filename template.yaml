@@ -84,8 +84,6 @@ Resources:
             Action: "S3:GetObject"
             Resource: !Sub "${ResumeWebsiteBucket.Arn}/*"
             Condition:
-              # ArnEquals:
-              #   "aws:SourceArn": !Sub "arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${MyCloudfrontDistribution}"
               StringEquals:
                 AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${MyCloudfrontDistribution}
 
@@ -139,7 +137,6 @@ Resources:
       DistributionConfig:
         Aliases:
           - !Ref ResumeWebsiteBucket
-          # - !Join [".", ["www", !Ref WebDomainName]]
         Comment: "Cloudfront distribution for serverless website"
         ViewerCertificate:
           AcmCertificateArn: !Ref AcmCertificateArn
@@ -149,23 +146,14 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
           TargetOriginId:
             !Select [2, !Split ["/", !GetAtt ResumeWebsiteBucket.WebsiteURL]]
-          # DefaultTTL: 0
-          # MinTTL: 0
-          # MaxTTL: 0
-          # ForwardedValues:
-          #   QueryString: false
           CachePolicyId: "658327ea-f89d-4fab-a63d-7e88639e58f6" # Managed-CachingOptimized
           Compress: true
           OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf # CORS-S3Origin
         Origins:
-          - DomainName: !GetAtt WebBucket.RegionalDomainName
-              # !Select [2, !Split ["/", !GetAtt ResumeWebsiteBucket.WebsiteURL]]
+          - DomainName: !GetAtt ResumeWebsiteBucket.RegionalDomainName
             Id: !Sub "${ResumeWebsiteBucket}.s3-website-${AWS::Region}.amazonaws.com"
-            # OriginAccessControlId: !GetAtt CloudFrontOriginAccessControl.Id
             OriginAccessControlId: !Ref CloudFrontOriginAccessControl
             S3OriginConfig: {}
-            # CustomOriginConfig:
-            #   OriginProtocolPolicy: http-only
         PriceClass: PriceClass_100
         Enabled: true
         DefaultRootObject: index.html
@@ -185,11 +173,6 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
           TargetOriginId:
             !Select [2, !Split ["/", !GetAtt RedirectBucket.WebsiteURL]]
-          # DefaultTTL: 0
-          # MinTTL: 0
-          # MaxTTL: 0
-          # ForwardedValues:
-          #   QueryString: false
           CachePolicyId: "658327ea-f89d-4fab-a63d-7e88639e58f6" # Managed-CachingOptimized
           Compress: true
           OriginRequestPolicyId: "acba4595-bd28-49b8-b9fe-13317c0390fa" # Managed-UserAgentRefererHeaders
@@ -197,13 +180,10 @@ Resources:
           - DomainName:
               !Select [2, !Split ["/", !GetAtt RedirectBucket.WebsiteURL]]
             Id: !Sub "${RedirectBucket}.s3-website-${AWS::Region}.amazonaws.com"
-            # OriginAccessControlId: !GetAtt CloudFrontOriginAccessControl.Id
-            # S3OriginConfig: {}
             CustomOriginConfig:
               OriginProtocolPolicy: http-only
         PriceClass: PriceClass_100
         Enabled: true
-        # DefaultRootObject: index.html
 
 
 Outputs:
