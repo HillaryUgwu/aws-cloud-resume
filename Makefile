@@ -1,4 +1,4 @@
-.PHONY: build deploy-infra list-output deploy-site sync
+.PHONY: build deploy-infra list-output deploy-site sync-bucket teardown all empty-bucket kill-stack
 
 validate:
 	sam validate -t template.yaml
@@ -12,10 +12,10 @@ deploy-infra:
 list-output:
 	sam list stack-outputs --stack-name cloudResume --output json > ./src/frontend/output.json
 
-sync:
-	aws s3 sync ./src/frontend s3://ohary37.com
+sync-bucket:
+	aws s3 sync ./src/frontend s3://cv.ohary37.com
 
-deploy-site: list-output sync
+deploy-site: list-output sync-bucket
 
 invoke-local:
 	sam build && sam local invoke countFunction
@@ -23,8 +23,14 @@ invoke-local:
 invoke-remote:
 	sam build && sam remote invoke countFunction
 
-teardown:
-	aws s3 rm s3://ohary37.com --recursive
+empty-bucket:
+	aws s3 rm s3://cv.ohary37.com --recursive
+
+kill-stack:
 	sam delete --stack-name cloudResume --no-prompts
 
+teardown: empty-bucket kill-stack
+
 all: build deploy-infra deploy-site
+
+redo-allover: teardown all
