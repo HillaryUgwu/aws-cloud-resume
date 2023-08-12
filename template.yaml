@@ -15,10 +15,10 @@ Parameters:
     Type: AWS::SSM::Parameter::Value<String>
     Description: "R53 hosted zone ID used for the domain"
     Default: /HostedZoneId
-  AcmCertificateArn:
-    Type: AWS::SSM::Parameter::Value<String>
-    Description: "ACM Certificate arn from parameter store"
-    Default: /AcmCertificateArn
+  # AcmCertificateArn:
+  #   Type: AWS::SSM::Parameter::Value<String>
+  #   Description: "ACM Certificate arn from parameter store"
+  #   Default: /AcmCertificateArn
   WebDomainName:
     Type: AWS::SSM::Parameter::Value<String>
     Description: "Naked domain name of the website"
