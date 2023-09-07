@@ -1,0 +1,15 @@
+FROM nginx:latest
+COPY . /usr/share/nginx/html
+
+
+
+
+# FROM node:16.18
+
+ENV PORT=80
+
+# COPY . /frontend-react-js
+# WORKDIR /frontend-react-js
+# RUN npm install
+EXPOSE ${PORT}
+# CMD ["npm", "start"]

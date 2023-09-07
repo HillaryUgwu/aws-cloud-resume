@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  frontend:
+    environment:
+      FRONTEND_URL: "https://${CODESPACE_NAME}-3000.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
+    build: ./src/frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - cruddur-net
+    volumes:
+      - ./frontend-react-js:/usr/share/nginx/html
+
+
+## the name flag is a hack to change the default prepend folder
+## name when outputting the image names
+networks: 
+  cruddur-net:
+    driver: bridge
+    name: cruddur-net
+
+volumes:
+  db:
+    driver: local
