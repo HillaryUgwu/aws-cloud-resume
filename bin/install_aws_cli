@@ -11,4 +11,4 @@ sudo ./aws/install
 
 aws sts get-caller-identity
 
-cd $PROJECT_ROOT
+cd $THEIA_WORKSPACE_ROOT
