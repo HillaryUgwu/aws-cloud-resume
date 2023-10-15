@@ -1,4 +1,0 @@
-#!/usr/bin/bash
-
-docker build -t my-static-site --no-cache .
-docker run -d -p 80:80 my-static-site

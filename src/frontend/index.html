@@ -7,7 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="visitorCount.js"></script>
+    <link rel="shortcut icon" href="resume.ico">
     <title>Resume</title>
+    <script type="text/javascript">
+		function digitalWatch() {
+			var date = new Date();
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var seconds = date.getSeconds();
+			if (hours < 10) hours = "0" + hours;
+			if (minutes < 10) minutes = "0" + minutes;
+
+
+			document.getElementById("hours").innerHTML = hours;
+
+			document.getElementById("minutes").innerHTML = minutes;
+
+			document.getElementById("seconds").innerHTML = seconds;
+			setTimeout("digitalWatch()", 1000);
+		}
+	</script>
 </head>
 
 <body>
@@ -191,6 +210,25 @@ Microcontrollers & Electronic circuit design.
                 </div>
             </div>
         </div>
+        <body onload="digitalWatch()">
+            <div class="col-sm-7 col-md-6">
+                <ul id="countdown">
+
+                    <li>
+                        <span id="hours" class="hours time-font"></span>
+                        <p class="">hours </p>
+                    </li>
+                    <li>
+                        <span id="minutes" class="minutes time-font"></span>
+                        <p class="">minutes</p>
+                    </li>
+                    <li>
+                        <span id="seconds" class="seconds time-font"></span>
+                        <p class="">seconds</p>
+                    </li>
+                </ul>
+            </div>
+        </body>
 </body>
 
 </html>
