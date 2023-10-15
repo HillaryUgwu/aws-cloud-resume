@@ -26,4 +26,10 @@ tasks:
       sam --version
       cd $THEIA_WORKSPACE_ROOT
 
+  - name: http-server
+    before: |
+      cd $THEIA_WORKSPACE_ROOT
+      npm install --global http-server
+    command: 
+      http-server
 
