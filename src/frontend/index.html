@@ -7,54 +7,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="visitorCount.js"></script>
-    <link rel="shortcut icon" href="resume.ico">
+    <link rel="shortcut icon" href="fav-cv.ico">
     <title>Resume</title>
     <script type="text/javascript">
-		function digitalWatch() {
-			var date = new Date();
-			var hours = date.getHours();
-			var minutes = date.getMinutes();
-			var seconds = date.getSeconds();
-			if (hours < 10) hours = "0" + hours;
-			if (minutes < 10) minutes = "0" + minutes;
+        function digitalWatch() {
+            var date = new Date();
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            if (hours < 10) hours = "0" + hours;
+            if (minutes < 10) minutes = "0" + minutes;
 
 
-			document.getElementById("hours").innerHTML = hours;
+            document.getElementById("hours").innerHTML = hours;
 
-			document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("minutes").innerHTML = minutes;
 
-			document.getElementById("seconds").innerHTML = seconds;
-			setTimeout("digitalWatch()", 1000);
-		}
-	</script>
+            document.getElementById("seconds").innerHTML = seconds;
+            setTimeout("digitalWatch()", 1000);
+        }
+    </script>
 </head>
 
 <body>
     <div class="container">
         <div class="profile">
-            <div class="profile_container">
-                <div class="profile_profileImage">
-                    <img src="./gg_2.jpg" alt="candidate image Hillary Ugwu">
+            <div class="profile_section">
+                <div class="profile_container">
+                    <div class="profile_profileImage">
+                        <img src="./gg_2.jpg" alt="candidate image Hillary Ugwu">
+                    </div>
+                    <div>
+                        <h1 class="profile_name">
+                            <span class="first_name"> Hillary </span>
+                            <span class="last_name">Ugwu </span>
+                        </h1>
+                        <p class="profile_title"> Cloud Engineer </p>
+                    </div>
                     <div class="profile_counter">
-                        <p class="counter"> Current Visitors count: </p>
+                        <p class="counter"> Current Visitors Count: </p>
                         <p id="count" class="count"></p>
                     </div>
-                </div>
-                <div>
-                    <h1 class="profile_name">
-                        <span class="first_name"> Hillary </span>
-                        <span class="last_name">Ugwu </span>
-                    </h1>
-                    <p class="profile_title"> Cloud Engineer </p>
-                    <p class="description">
-                        Hardworking and detail-oriented Cloud Engineer with extensive experience in AWS cloud solutions architecture and development. Experienced Python programmer with a passion for creating efficient and scalable solutions. Dynamic and team-oriented professional with a solid background in Terraform, Docker, Git, and Bash scripting. Graduated from a Cloud Project Bootcamp, demonstrating a strong commitment to continuous learning and professional growth. Dedicated to delivering high-quality results and exceeding client expectations.
-                    </p>
+                    <div class="hr1"></div>
+                    <div>
+                        <p class="description">
+                            Hardworking and detail-oriented Cloud Engineer with extensive experience in AWS cloud
+                            solutions
+                            architecture and development. Experienced Python programmer with a passion for creating
+                            efficient and scalable solutions. Dynamic and team-oriented professional with a solid
+                            background
+                            in Terraform, Docker, Git, and Bash scripting. Dedicated to delivering high-quality results
+                            and
+                            exceeding client expectations.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="group_1">
+        <div class="group2">
+            <div>
+                <ul id="contact">
+                    <li class="email"><a href="mailto:someone@example.com" target="_blank">ugwuhillaryemeka@gmail.com</a></li>
+                    <li class="phone"><a href="tel:+4917683210507" target="_blank">+49 176 83 21 05 07</a></li>
+                    <li class="website"><a href="https://ohary37.com" target="_blank">ohary37.com</a></li>
+                </ul>
+                <div class="hr2"></div>
+            </div>
+        </div>
+        <div class="group2">
+            <div>
+                <ul id="contact">
+                    <li class="address"><a href="https://maps.google.com/?q=Stuttgart+Germany" target="_blank">Stuttgart, Germany</a></li>
+                    <li class="linkedin"><a href="https://linkedin.com/in/hugwu" target="_blank">linkedin.com/in/hugwu</a></li>
+                    <li class="github"><a href="https://github.com/HillaryUgwu" target="_blank">github.com/HillaryUgwu</a></li>
+                </ul>
+                <div class="hr2"></div>
+            </div>
+        </div>
+        <div class="group">
             <div class="Contact_Info">
-                <h3 class="Contact">Contact</h3>
+                <h3 class="section-header">Contact</h3>
                 <ul class="contact_list description" style="list-style-type: none">
                     <li>phone number : +49 176 83 21 05 07</li>
                     <li>email : ugwuhillaryemeka@gmail.com</li>
@@ -64,7 +96,7 @@
                 </ul>
             </div>
             <div class="software">
-                <h3 class="Contact"> Skills </h3>
+                <h3 class="section-header"> Skills </h3>
                 <div class="software_item">
                     <h4 class="software_name"> Python</h4>
                     <p class="description">
@@ -91,7 +123,7 @@
                 </div>
             </div>
             <div class="Lang">
-                <h3 class="Contact">Languages</h3>
+                <h3 class="section-header">Languages</h3>
                 <ul class="lang_names description" style="list-style-type: none">
                     <li>German - professional working proficiency</li>
                     <li>English - full proficiency</li>
@@ -101,7 +133,7 @@
                 </ul>
             </div>
             <div class="Tools">
-                <h3 class="Contact">Tools</h3>
+                <h3 class="section-header">Tools</h3>
                 <ul class="tool_names description" style="list-style-type: none">
                     <li>Docker</li>
                     <li>CloudFormation & Terraform</li>
@@ -111,7 +143,7 @@
                 </ul>
             </div>
             <div class="Hobbs">
-                <h3 class="Contact">Hobbies</h3>
+                <h3 class="section-header">Hobbies</h3>
                 <ul class="hobbies_names description" style="list-style-type: none">
                     <li>Cycling</li>
                     <li>Hiking</li>
@@ -119,24 +151,31 @@
                 </ul>
             </div>
         </div>
-        <div class="group_2">
+        <div class="group">
             <div class="experience">
-                <h3 class="Contact"> Work Experience</h3>
+                <h3 class="section-header"> Work Experience</h3>
                 <div class="exp_item">
                     <p class="item_preTitle"> February 2021 - present</p>
                     <h4 class="item_Title"> Synapticon GmbH</h4>
                     <p class="item_subTitle">Performance and Validation Engineer</p>
                     <p class="description">
-                        Commissioned Somanet (Node & Circulo) integrated servo drives coupled to a BLDC motor via EtherCAT and executed the
-system identiﬁcation and tuning in velocity, position and torque control modes;
-Evaluated the (dynamic) robustness and overall performance of the Circulo integrated nonius magnetic encoder
-system applicable for cobots and smart actuators;
-Implemented split frequency dual-loop control algorithm which achieved 82% faster settling time and less overshooot via
-Speedgoat real time rapid control prototyping system, Matlab/Simulink RT, and EtherCAT master in Beckofff TwinCAT RT;
-Specified system assembly tolerance with measurement data acquired from the encoder performance test bench and
-the data analysis, signal processing, visualization, and assessment carried out using MATLAB and python;
-Full auto-tuning test and veriﬁcation on Siemens motor as load machine via Cardan and spider coupling to HMD08 Heidrive
-BLDC motor and 6 degrees of freedom Foresight FR 3500 ic robot.
+                        Commissioned Somanet (Node & Circulo) integrated servo drives coupled to a BLDC motor via
+                        EtherCAT and executed the
+                        system identiﬁcation and tuning in velocity, position and torque control modes;
+                        Evaluated the (dynamic) robustness and overall performance of the Circulo integrated nonius
+                        magnetic encoder
+                        system applicable for cobots and smart actuators;
+                        Implemented split frequency dual-loop control algorithm which achieved 82% faster settling time
+                        and less overshooot via
+                        Speedgoat real time rapid control prototyping system, Matlab/Simulink RT, and EtherCAT master in
+                        Beckofff TwinCAT RT;
+                        Specified system assembly tolerance with measurement data acquired from the encoder performance
+                        test bench and
+                        the data analysis, signal processing, visualization, and assessment carried out using MATLAB and
+                        python;
+                        Full auto-tuning test and veriﬁcation on Siemens motor as load machine via Cardan and spider
+                        coupling to HMD08 Heidrive
+                        BLDC motor and 6 degrees of freedom Foresight FR 3500 ic robot.
                     </p>
                 </div>
                 <div class="exp_item">
@@ -154,7 +193,7 @@ BLDC motor and 6 degrees of freedom Foresight FR 3500 ic robot.
                 </div>
             </div>
             <div class="prj">
-                <h3 class="Contact"> Projects</h3>
+                <h3 class="section-header"> Projects</h3>
                 <div class="prj_item">
                     <p class="item_subTitle">XYZ project</p>
                     <p class="description">
@@ -175,22 +214,22 @@ BLDC motor and 6 degrees of freedom Foresight FR 3500 ic robot.
                 </div>
             </div>
             <div class="edu">
-                <h3 class="Contact"> Education</h3>
+                <h3 class="section-header"> Education</h3>
                 <div class="edu_item">
                     <p class="item_preTitle"> Sep 2019 - Aug 2021</p>
                     <h4 class="item_Title"> University of Bourgogne Franche-Comte, Besancon, France</h4>
                     <p class="item_subTitle">MSc. Automation, Robotics and Control for Green Mechatronics</p>
                     <p class="description">
                         Advanced robotics & Microrobotics;
-Digital, Non-linear, Robust & Multi-variable systems control;
-3D design & SMART manufacturing of mechatronic systems;
-Optimization and Topology Optimization;
-Micromechatronics & micro transducers
-Industrial IT systems & networks;
-Sensors and actuators;
-Energy harvesting & energy-based modeling;
-Energy management fundamentals & Smart Grid;
-Numerical computation & Simulation of Multiphysics
+                        Digital, Non-linear, Robust & Multi-variable systems control;
+                        3D design & SMART manufacturing of mechatronic systems;
+                        Optimization and Topology Optimization;
+                        Micromechatronics & micro transducers
+                        Industrial IT systems & networks;
+                        Sensors and actuators;
+                        Energy harvesting & energy-based modeling;
+                        Energy management fundamentals & Smart Grid;
+                        Numerical computation & Simulation of Multiphysics
                     </p>
                 </div>
                 <div class="edu_item">
@@ -199,17 +238,18 @@ Numerical computation & Simulation of Multiphysics
                     <p class="item_subTitle">B.Eng. Automation of Technological Processes and production</p>
                     <p class="description">
                         Automation of technological processes;
-Automatic control (linear & non-linear system) & digital control;
-Intelligent system design & Technical cybernetics;
-General Robotics;
-Modeling and simulation of automated processes;
-Programming & Algorithmization;
-Data bases & web technology;
-Microcontrollers & Electronic circuit design.
+                        Automatic control (linear & non-linear system) & digital control;
+                        Intelligent system design & Technical cybernetics;
+                        General Robotics;
+                        Modeling and simulation of automated processes;
+                        Programming & Algorithmization;
+                        Data bases & web technology;
+                        Microcontrollers & Electronic circuit design.
                     </p>
                 </div>
             </div>
         </div>
+
         <body onload="digitalWatch()">
             <div class="col-sm-7 col-md-6">
                 <ul id="countdown">

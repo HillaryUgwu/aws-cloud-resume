@@ -22,7 +22,7 @@ tasks:
   - name: http-server
     before: |
       cd $THEIA_WORKSPACE_ROOT
-      npm install --global http-server
+      npm install --global --no-fund http-server
     command: 
       http-server
 

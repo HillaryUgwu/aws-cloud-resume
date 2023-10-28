@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 * {
     padding: 0;
@@ -10,6 +10,7 @@
     --primary-color: #ff7613;
     --text-color: #727171;
     --secondary-color: #ef13ff;
+    --graphic-color: rgb(44, 191, 170)
 }
 
 html {
@@ -17,7 +18,7 @@ html {
 }
 
 body {
-    font-family: Inter, sans-serif;
+    font-family: Roboto;
     background-color: black;
     color: white;
 }
@@ -33,13 +34,15 @@ a {
 }
 
 .description {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     font-size: 1.5rem;
     font-weight: 400;
     color: var(--text-color);
+    display: block;
+    text-align: justify;
 }
 
-.Contact {
+.section-header {
     color: var(--primary-color);
     font-weight: 700;
     font-size: 2rem;
@@ -67,14 +70,14 @@ a {
 
 /* layouts */
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     width: 90%;
     margin: 0 auto;
     display: grid;
-    padding: 5rem;
+    padding: 3rem;
     background: #070707;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 3rem;
 }
 
 @media only screen and (max-width: 768px) {
@@ -82,18 +85,28 @@ a {
         width: 100%;
         grid-template-columns: 1fr;
         padding: 3rem;
-        gap: 7rem;
+        gap: 3rem;
     }
 }
 
 .profile {
     grid-column: 1 / -1;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
+}
+
+.profile_section {
+    font-family: Roboto;
+    background-color: var(--graphic-color);
+    color: white;
 }
 
 .profile_counter {
-    margin-top: 1rem;
-    gap: 2rem;
+    /* background-color: var(--primary-color); */
+    margin-left: auto;
+    /* width: 500px; */
+    height: 50px;
+    gap: 1rem;
+    display: block;
 }
 
 .counter {
@@ -110,22 +123,25 @@ a {
     text-align: center;
 }
 
-.group_1 {
+.group {
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
-.group_2 {
+.group2 {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    /* flex-wrap: wrap; */
+    gap: 1rem;
+    /* max-height: fit-content; */
 }
 
 /* profile */
 .profile_container {
     display: flex;
-    gap: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .profile_profileImage {
@@ -161,6 +177,29 @@ a {
     }
 }
 
+/* horizontal and vertical lines */
+.vl {
+    border-left: 6px solid var(--graphic-color);
+    height: 500px;
+}
+
+.v2 {
+    border-left: 6px solid var(--graphic-color);
+    height: 500px;
+}
+
+.hr1 {
+    border-top: 3px solid white;
+    flex-basis: 100%;
+    height: 0;
+}
+
+.hr2 {
+    border-top: 3px solid var(--graphic-color);
+    flex-basis: 100%;
+    height: 0;
+}
+
 /* Contact */
 .contact_list {
     margin-top: 1rem;
@@ -187,3 +226,63 @@ a {
 .prj_item {
     margin-top: 1.5rem;
 }
+
+#contact {
+    font-family: Roboto;
+    font-size: 14pt;
+    /* width: 160px; */
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+  #contact li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: none no-repeat left 80%;/* left and centered */
+  }
+  #contact .email {
+    background-image: url(assets/icon/email.png);/*specify image here*/
+  }
+  #contact .phone {
+    background-image: url(assets/icon/phone.png);/*specify image here*/
+  }
+  #contact .website {
+    background-image: url(assets/icon/website.png);/*specify image here*/
+  }
+  #contact .address {
+    background-image: url(assets/icon/address.png);/*specify image here*/
+  }
+  #contact .linkedin {
+    background-image: url(assets/icon/linkedin.png);/*specify image here*/
+  }
+  #contact .github {
+    background-image: url(assets/icon/github.png);/*specify image here*/
+  }
+  #contact a {
+    /* font-size: .9em; */
+    display: block;
+    padding: 5px 2px 1px 20px;/* change 20px to width of icon+some padding*/
+    text-decoration: none;
+    color: #666666;
+    /* width:160px; /*not needed. also should have be 156px because of the 4px left padding */
+  }
+  /* unvisited link */
+  #contact a:link {
+    color:var(--graphic-color);
+  }
+  
+  /* visited link */
+  #contact a:visited {
+    color: green;
+  }
+ 
+  #contact a:hover, #contact a:focus {
+    color: #000;
+    background-color: #eeeeee;/* will hide the icon!!*/
+  }
+   
+  /* selected link */
+  #contact a:active {
+    color: blue;
+  }
