@@ -47,10 +47,30 @@
                     <div class="profile_counter">
                         <p class="counter"> Current Visitors Count: </p>
                         <p id="count" class="count"></p>
+
+                        <body onload="digitalWatch()">
+                            <div class="col-sm-7 col-md-6">
+                                <ul id="countdown">
+
+                                    <li>
+                                        <span id="hours" class="hours time-font"></span>
+                                        <p class="">hours </p>
+                                    </li>
+                                    <li>
+                                        <span id="minutes" class="minutes time-font"></span>
+                                        <p class="">minutes</p>
+                                    </li>
+                                    <li>
+                                        <span id="seconds" class="seconds time-font"></span>
+                                        <p class="">seconds</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </body>
                     </div>
                     <div class="hr1"></div>
                     <div>
-                        <p class="description">
+                        <h3 class="description">
                             Hardworking and detail-oriented Cloud Engineer with extensive experience in AWS cloud
                             solutions
                             architecture and development. Experienced Python programmer with a passion for creating
@@ -59,7 +79,7 @@
                             in Terraform, Docker, Git, and Bash scripting. Dedicated to delivering high-quality results
                             and
                             exceeding client expectations.
-                        </p>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -67,7 +87,8 @@
         <div class="group2">
             <div>
                 <ul id="contact">
-                    <li class="email"><a href="mailto:someone@example.com" target="_blank">ugwuhillaryemeka@gmail.com</a></li>
+                    <li class="email"><a href="mailto:someone@example.com"
+                            target="_blank">ugwuhillaryemeka@gmail.com</a></li>
                     <li class="phone"><a href="tel:+4917683210507" target="_blank">+49 176 83 21 05 07</a></li>
                     <li class="website"><a href="https://ohary37.com" target="_blank">ohary37.com</a></li>
                 </ul>
@@ -77,198 +98,306 @@
         <div class="group2">
             <div>
                 <ul id="contact">
-                    <li class="address"><a href="https://maps.google.com/?q=Stuttgart+Germany" target="_blank">Stuttgart, Germany</a></li>
-                    <li class="linkedin"><a href="https://linkedin.com/in/hugwu" target="_blank">linkedin.com/in/hugwu</a></li>
-                    <li class="github"><a href="https://github.com/HillaryUgwu" target="_blank">github.com/HillaryUgwu</a></li>
+                    <li class="address"><a href="https://maps.google.com/?q=Stuttgart+Germany"
+                            target="_blank">Stuttgart, Germany</a></li>
+                    <li class="linkedin"><a href="https://linkedin.com/in/hugwu"
+                            target="_blank">linkedin.com/in/hugwu</a></li>
+                    <li class="github"><a href="https://github.com/HillaryUgwu"
+                            target="_blank">github.com/HillaryUgwu</a></li>
                 </ul>
                 <div class="hr2"></div>
             </div>
         </div>
-        <div class="group">
-            <div class="Contact_Info">
-                <h3 class="section-header">Contact</h3>
-                <ul class="contact_list description" style="list-style-type: none">
-                    <li>phone number : +49 176 83 21 05 07</li>
-                    <li>email : ugwuhillaryemeka@gmail.com</li>
-                    <li>linkedin : www.linkedin.com/in/hugwu</li>
-                    <li>github : www.github.com/in/HillaryUgwu</li>
-                    <li>address : 29 Wilhel-Haspel-str., 71065, Sindelfingen, Stuttgart, Germany</li>
-                </ul>
+
+        <div class="timelines">
+            <div class="timeline experience">
+                <h2 class="timeline-title">Experience</h2>
+                <div class="hr2"></div>
+                <!-- <div class="timeline-items">
+                    <div class="timeline-item">
+                        <h3>Performance and Validation Engineer</h3>
+                        <h5>Synapticon GmbH</h5>
+                        <div class="abstract">Verywonderfulcertificatetobehold</div>
+                        <time datetime="2020/2022">01/2022 &ndash; Present</time>
+                        <div class="location">Stuttgart, Germany </div>
+                        <div class="tasks">Achievements/Tasks</div>
+                        <div class="details">
+                            <ul>
+                                <li>Conducted system-level performance validation and
+                                    assessment of motion control servo drives for robotics,
+                                    cobots, and industrial automation using Python and
+                                    MATLAB, ensuring optimization of system performance</li>
+                                <li>Implemented a continuous integration and lifetime
+                                    evaluation system using Python (state machine) to keep up
+                                    with the ongoing product performance and reliability</li>
+                                <li>Designed and conducted comprehensive endurance testing
+                                    and validation of robotic and industrial automation servo
+                                    drives using Mortocortex Linux real-time system and
+                                    multithreaded asynchronous programming in Python</li>
+                                <li>Effectuated data manipulation and streaming for
+                                    visualization and enhanced data handling efficiency and
+                                    flexibility using REST and WebSocket APIs</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Automation and Robotics Engineer (Intern)</h3>
+                        <h5>Synapticon GmbH</h5>
+                        <div class="abstract">Verywonderfulcertificatetobehold</div>
+                        <time datetime="2019/2020">02/2021 &ndash; 12/2021</time>
+                        <div class="location">Stuttgart, Germany</div>
+                        <div class="tasks">Achievements/Tasks</div>
+                        <div class="details">
+                            <ul>
+                                <li>Evaluated the (dynamic) robustness and performance of
+                                    Robotic integrated Servo drive encoder system</li>
+                                <li>Implemented split frequency dual-loop control algorithm
+                                    which achieved 62% better performance via Speedgoat real
+                                    time rapid control prototyping system, Matlab / Simulink RT,
+                                    and EtherCAT master in Beckofff TwinCAT RT</li>
+                                <li>Conducted Robotic drive data analysis, signal processing,
+                                    visualization, and assessment via MATLAB and python</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Mechanical and Electrical Engineering Engineer</h3>
+                        <h5>Ministry of Works and Transport, Ibadan, Nigeria</h5>
+                        <div class="abstract">Verywonderfulcertificatetobehold</div>
+                        <time datetime="2015/2017">10/2018 &ndash; 10/2019</time>
+                        <div class="location">Ibadan, Nigeria (Part-time)</div>
+                        <div class="tasks">Achievements/Tasks</div>
+                        <div class="details">
+                            <ul>
+                                <li>Maintained and renovated mechanical and electrical motors, machinery and equipment
+                                </li>
+                                <li>Documented and analyzed production machinery to ensure maximum production output is
+                                    achieved</li>
+                                <li>Collaborated with manufacturing engineers to assist in the effective and efficient
+                                    resolution of energy and automation issues thereby improving automation and energy
+                                    efficiency at the facility</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
             </div>
-            <div class="software">
-                <h3 class="section-header"> Skills </h3>
-                <div class="software_item">
-                    <h4 class="software_name"> Python</h4>
-                    <p class="description">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                    </p>
+            <div class="timeline education">
+                <h2 class="timeline-title">Education</h2>
+                <div class="hr2"></div>
+                <!-- <div class="timeline-items">
+                    <div class="timeline-item">
+                        <h3>MSc. Automation, Robotics and Control for
+                            Green Mechatronics</h3>
+                        <h5>University of Bourgogne Franche-Comte</h5>
+                        <time datetime="2017/2019">09/2019 &ndash; 08/2021</time>
+                        <div class="location">Besancon, France (16.581/20 GPA)</div>
+                        <div class="tasks">Thesis Project</div>
+                        <div class="details">
+                            <ul>
+                                <li>Absolute Nonius Magnetic Encoder Robustness and
+                                    Performance for Robotic Application</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>B.Eng. Automation of Technological
+                                Processes and production</h3>
+                            <h5>Belgorod State Technological University</h5>
+                            <time datetime="2011/2016">09/2014 &ndash; 07/2018</time>
+                            <div class="location">Belgorod, Russia (4.58/5 GPA)</div>
+                            <div class="tasks">Thesis Project</div>
+                            <div class="details">
+                                <ul>
+                                    <li>Automatic control of Bridge Crane System</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="timelines">
+                <div class="timeline experience">
+                    <h2 class="timeline-title">Skills</h2>
+                    <div class="hr2"></div>
+                    <!-- <div class="interest-item">
+                        <ul class="interest">
+                            <li id="rcorners-fill-089">Teamwork</li>
+                            <li id="rcorners-fill-045">Linux</li>
+                            <li id="rcorners-fill-067">Python</li>
+                            <li id="rcorners-fill-023">AWS</li>
+                            <li id="rcorners-fill-023">C#</li>
+                            <li id="rcorners-fill-067">C/C++</li>
+                        </ul>
+                        <ul class="interest">
+                            <li id="rcorners-fill-023">Git</li>
+                            <li id="rcorners-fill-045">Flask</li>
+                            <li id="rcorners-fill-045">Ruby</li>
+                            <li id="rcorners-fill-067">ReactJs</li>
+                            <li id="rcorners-fill-low">Typescript</li>
+                            <li id="rcorners-fill-067">Golang</li>
+                        </ul>
+                        <ul class="interest">
+                            <li id="rcorners-fill-089">Terraform</li>
+                            <li id="rcorners-fill-big">Cloud computing</li>
+                            <li id="rcorners-fill-low">Serverless</li>
+                            <li id="rcorners-fill-067">RestAPI</li>
+                        </ul>
+                        <ul class="interest">
+                            <li id="rcorners-fill-089">MATLAB</li>
+                            <li id="rcorners-fill-mid">Simulink RT</li>
+                            <li id="rcorners-fill-089">EtherCAT</li>
+                            <li id="rcorners-fill-low">Codesys</li>
+                            <li id="rcorners-fill-089">Databases</li>
+                        </ul>
+                        <ul class="interest">
+                            <li id="rcorners-fill-023">PHP</li>
+                            <li id="rcorners-fill-mid">MotorCortex</li>
+                            <li id="rcorners-fill-mid">Speedgoat</li>
+                            <li id="rcorners-fill-023">PLC</li>
+                            <li id="rcorners-fill-low">Onshape</li>
+                        </ul>
+                    </div> -->
                 </div>
-                <div class="software_item">
-                    <h4 class="software_name"> C# </h4>
-                    <p class="description">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                    </p>
-                </div>
-                <div class="software_item">
-                    <h4 class="software_name"> SQL </h4>
-                    <p class="description">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                    </p>
-                </div>
-                <div class="software_item">
-                    <h4 class="software_name"> Matlab </h4>
-                    <p class="description">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                    </p>
+                <div class="timeline education">
+                    <h2 class="timeline-title">Personal Projects</h2>
+                    <div class="hr2"></div>
+                    <!-- <div class="timeline-items">
+                        <div class="timeline-item">
+                            <h3>Terraform / Terratown Project</h3>
+                            <div class="abstract">Verywonderfulcertificatetobehold</div>
+                            <time datetime="2017/2019">09/2023 &ndash; 10/2023</time>
+                            <div class="details">
+                                <ul>
+                                    <li>Demonstrated practical knowledge of HashiCorp Terraform and
+                                        terraform cloud including GitOps in terraform cloud</li>
+                                    <li>Created and worked with custom Terraform providers, Static web
+                                        hosting, Content distribution services and multi-cloud</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>AWS Cloud Resume Challenge</h3>
+                            <div class="abstract">Verywonderfulcertificatetobehold</div>
+                            <time datetime="2011/2016">08/2023 &ndash; 08/2023</time>
+                            <div class="details">
+                                <ul>
+                                    <li>Developed an AWS Cloud Resume Challenge using AWS SAM,
+                                        DynamoDB, S3, CloudFront, AWS Lambda, API Gateway, GitHub
+                                        Actions/Workflow, and Pytest</li>
+                                    <li>Demonstrated my proficiency in cloud-based development and
+                                        testing, as well as my ability to leverage various AWS services to
+                                        create a robust and scalable application</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>AWS Cloud Project (CRUDDUR )</h3>
+                            <div class="abstract">Verywonderfulcertificatetobehold</div>
+                            <time datetime="2009/2010">03/2023 &ndash; 09/2023</time>
+                            <div class="details">
+                                <ul>
+                                    <li>Designed and engineer a full-stack frontend (REACTJS) and
+                                        backend (FLASK) CRUDDUR messaging web application</li>
+                                    <li>Graduated from Cloud Project Bootcamp, demonstrating a strong
+                                        commitment to continuous learning and professional growth</li>
+                                    <li>Enhanced my knowledge of advanced Linux commands, bash
+                                        scripting, git and RESTAPI's configuration and usage</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
-            <div class="Lang">
-                <h3 class="section-header">Languages</h3>
-                <ul class="lang_names description" style="list-style-type: none">
-                    <li>German - professional working proficiency</li>
-                    <li>English - full proficiency</li>
-                    <li>Russian: Professional Working Proﬁciency</li>
-                    <li>French: Professional Working Proﬁciency</li>
-                    <li>Igbo: Native or Bilingual Proﬁciency</li>
-                </ul>
+            <div class="timeline education">
+                <h2 class="timeline-title">Certificates and awards</h2>
+                <div class="hr2"></div>
+                <!-- <div class="timeline-items">
+                    <div class="timeline-item">
+                        <h3>Terraform Terraform Project Certificate</h3>
+                        <div class="abstract">Verywonderfulcertificatetobehold</div>
+                        <time datetime="2017/2019">10/2023</time>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>AWS Cloud Project Bootcamp Certificate</h3>
+                        <div class="abstract">Verywonderfulcertificatetobehold</div>
+                        <time datetime="2011/2016">09/2023</time>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>AWS Certified Solutions Architect – Associate</h3>
+                        <div class="abstract">Verywonderfulcertificatetobehold</div>
+                        <time datetime="2009/2010">07/2023 &ndash; 07/2026</time>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>AWS Certified Solutions Architect – Associate</h3>
+                        <div class="abstract">Verywonderfulcertificatetobehold</div>
+                        <time datetime="2011/2016">04/2023 &ndash; 04/2026</time>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Bilateral Education Scholarship award to study in Russia</h3>
+                        <div class="abstract">Full ride academic Scholarship of excellence awarded by the Federal
+                            Government of Nigeria through Federal Ministry of Education</div>
+                        <time datetime="2009/2010">09/2013 &ndash; 08/2018</time>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Energy Management Fundamentals for System Integrators</h3>
+                        <div class="abstract">Schneider Electric's Energy university certificate in energy efficiency
+                            projects and fundamentals, financial analysis, smart grid, HVAC</div>
+                        <time datetime="2011/2016">9/2019 &ndash; 01/2020</time>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Full stack Web Development using PHP/MYSQL</h3>
+                        <div class="abstract">Certification from the Kelvin Academy School of Designs & Programming
+                            Nsukka</div>
+                        <time datetime="2009/2010">04/2013 &ndash; 07/2013</time>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>MTN Foundation Science and Technology Scholarship Scheme</h3>
+                        <div class="abstract">Award of excellence for exceptional science and engineering students.
+                            Worth: 200 000 Naira per annum</div>
+                        <time datetime="2009/2010">04/2013 &ndash; 07/2013</time>
+                    </div>
+                </div> -->
             </div>
-            <div class="Tools">
-                <h3 class="section-header">Tools</h3>
-                <ul class="tool_names description" style="list-style-type: none">
-                    <li>Docker</li>
-                    <li>CloudFormation & Terraform</li>
-                    <li>Ansible</li>
-                    <li>Github actions</li>
-                    <li>Jenkins</li>
-                </ul>
+            <div class="timeline education">
+                <h2 class="timeline-title">Languages</h2>
+                <div class="hr2"></div>
+                <!-- <div class="language-bar">
+                    <ul class="language">
+                        <li class="language-item">Igbo:</li>
+                        <li class="language-item1">English:</li>
+                    </ul>
+                    <ul class="language">
+                        <li class="language-level">Native or Bilingual Proficiency</li>
+                        <li class="language-level2">Full Professional Proficiency</li>
+                    </ul>
+                    <ul class="language">
+                        <li class="language-item">German:</li>
+                        <li class="language-item2">Russian:</li>
+                    </ul>
+                    <ul class="language">
+                        <li class="language-level">Professional Working Proficiency</li>
+                        <li class="language-level">Professional Working Proficiency</li>
+                    </ul>
+                </div> -->
             </div>
-            <div class="Hobbs">
-                <h3 class="section-header">Hobbies</h3>
-                <ul class="hobbies_names description" style="list-style-type: none">
-                    <li>Cycling</li>
-                    <li>Hiking</li>
-                    <li>Open source software</li>
-                </ul>
+            <div class="timeline education">
+                <h2 class="timeline-title">Interests</h2>
+                <div class="hr2"></div>
+                <!-- <div class="interest-item">
+                    <ul class="interest">
+                        <li id="rcorners-hollow-low">Technology</li>
+                        <li id="rcorners-hollow-bit">Cycling</li>
+                        <li id="rcorners-hollow-low">Programming</li>
+                        <li id="rcorners-hollow-bit">Football</li>
+                    </ul>
+                    <ul class="interest">
+                        <li id="rcorners-hollow-bit">Traveling</li>
+                        <li id="rcorners-hollow-big">Open source software</li>
+                        <li id="rcorners-hollow-mid">Gym exercises</li>
+                    </ul>
+                </div> -->
             </div>
         </div>
-        <div class="group">
-            <div class="experience">
-                <h3 class="section-header"> Work Experience</h3>
-                <div class="exp_item">
-                    <p class="item_preTitle"> February 2021 - present</p>
-                    <h4 class="item_Title"> Synapticon GmbH</h4>
-                    <p class="item_subTitle">Performance and Validation Engineer</p>
-                    <p class="description">
-                        Commissioned Somanet (Node & Circulo) integrated servo drives coupled to a BLDC motor via
-                        EtherCAT and executed the
-                        system identiﬁcation and tuning in velocity, position and torque control modes;
-                        Evaluated the (dynamic) robustness and overall performance of the Circulo integrated nonius
-                        magnetic encoder
-                        system applicable for cobots and smart actuators;
-                        Implemented split frequency dual-loop control algorithm which achieved 82% faster settling time
-                        and less overshooot via
-                        Speedgoat real time rapid control prototyping system, Matlab/Simulink RT, and EtherCAT master in
-                        Beckofff TwinCAT RT;
-                        Specified system assembly tolerance with measurement data acquired from the encoder performance
-                        test bench and
-                        the data analysis, signal processing, visualization, and assessment carried out using MATLAB and
-                        python;
-                        Full auto-tuning test and veriﬁcation on Siemens motor as load machine via Cardan and spider
-                        coupling to HMD08 Heidrive
-                        BLDC motor and 6 degrees of freedom Foresight FR 3500 ic robot.
-                    </p>
-                </div>
-                <div class="exp_item">
-                    <p class="item_preTitle"> Feb 2022 - Aug 2022</p>
-                    <h4 class="item_Title"> Something Group of Companies Ltd</h4>
-                    <p class="item_subTitle">Data Interna</p>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur.
-                    </p>
-                </div>
-            </div>
-            <div class="prj">
-                <h3 class="section-header"> Projects</h3>
-                <div class="prj_item">
-                    <p class="item_subTitle">XYZ project</p>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                    </p>
-                </div>
-                <div class="prj_item">
-                    <p class="item_subTitle">ABC project</p>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                    </p>
-                </div>
-            </div>
-            <div class="edu">
-                <h3 class="section-header"> Education</h3>
-                <div class="edu_item">
-                    <p class="item_preTitle"> Sep 2019 - Aug 2021</p>
-                    <h4 class="item_Title"> University of Bourgogne Franche-Comte, Besancon, France</h4>
-                    <p class="item_subTitle">MSc. Automation, Robotics and Control for Green Mechatronics</p>
-                    <p class="description">
-                        Advanced robotics & Microrobotics;
-                        Digital, Non-linear, Robust & Multi-variable systems control;
-                        3D design & SMART manufacturing of mechatronic systems;
-                        Optimization and Topology Optimization;
-                        Micromechatronics & micro transducers
-                        Industrial IT systems & networks;
-                        Sensors and actuators;
-                        Energy harvesting & energy-based modeling;
-                        Energy management fundamentals & Smart Grid;
-                        Numerical computation & Simulation of Multiphysics
-                    </p>
-                </div>
-                <div class="edu_item">
-                    <p class="item_preTitle"> Sep 2014 - Jul 2018</p>
-                    <h4 class="item_Title"> Belgorod State Technological University, Russia</h4>
-                    <p class="item_subTitle">B.Eng. Automation of Technological Processes and production</p>
-                    <p class="description">
-                        Automation of technological processes;
-                        Automatic control (linear & non-linear system) & digital control;
-                        Intelligent system design & Technical cybernetics;
-                        General Robotics;
-                        Modeling and simulation of automated processes;
-                        Programming & Algorithmization;
-                        Data bases & web technology;
-                        Microcontrollers & Electronic circuit design.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <body onload="digitalWatch()">
-            <div class="col-sm-7 col-md-6">
-                <ul id="countdown">
-
-                    <li>
-                        <span id="hours" class="hours time-font"></span>
-                        <p class="">hours </p>
-                    </li>
-                    <li>
-                        <span id="minutes" class="minutes time-font"></span>
-                        <p class="">minutes</p>
-                    </li>
-                    <li>
-                        <span id="seconds" class="seconds time-font"></span>
-                        <p class="">seconds</p>
-                    </li>
-                </ul>
-            </div>
-        </body>
 </body>
 
 </html>

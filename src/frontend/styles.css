@@ -8,9 +8,10 @@
 
 :root {
     --primary-color: #ff7613;
-    --text-color: #727171;
+    --text-color: #0c0c0c;
     --secondary-color: #ef13ff;
-    --graphic-color: rgb(44, 191, 170)
+    --graphic-color: rgb(44, 191, 170);
+    --abstract-color: #898686;
 }
 
 html {
@@ -123,20 +124,6 @@ a {
     text-align: center;
 }
 
-.group {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.group2 {
-    display: flex;
-    flex-direction: column;
-    /* flex-wrap: wrap; */
-    gap: 1rem;
-    /* max-height: fit-content; */
-}
-
 /* profile */
 .profile_container {
     display: flex;
@@ -207,6 +194,215 @@ a {
     line-height: 1;
 }
 
+#contact {
+    font-family: Roboto;
+    font-size: 14pt;
+    /* width: 160px; */
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+#contact li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: none no-repeat left 80%;
+    /* left and centered */
+}
+
+#contact .email {
+    background-image: url(assets/icon/email.png);
+    /*specify image here*/
+}
+
+#contact .phone {
+    background-image: url(assets/icon/phone.png);
+    /*specify image here*/
+}
+
+#contact .website {
+    background-image: url(assets/icon/website.png);
+    /*specify image here*/
+}
+
+#contact .address {
+    background-image: url(assets/icon/address.png);
+    /*specify image here*/
+}
+
+#contact .linkedin {
+    background-image: url(assets/icon/linkedin.png);
+    /*specify image here*/
+}
+
+#contact .github {
+    background-image: url(assets/icon/github.png);
+    /*specify image here*/
+}
+
+#contact a {
+    /* font-size: .9em; */
+    display: block;
+    padding: 5px 2px 1px 20px;
+    /* change 20px to width of icon+some padding*/
+    text-decoration: none;
+    color: #666666;
+    /* width:160px; /*not needed. also should have be 156px because of the 4px left padding */
+}
+
+/* unvisited link */
+#contact a:link {
+    color: var(--graphic-color);
+}
+
+/* visited link */
+#contact a:visited {
+    color: green;
+}
+
+#contact a:hover,
+#contact a:focus {
+    color: #000;
+    background-color: #eeeeee;
+    /* will hide the icon!!*/
+}
+
+/* selected link */
+#contact a:active {
+    color: blue;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.group2 {
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    gap: 0.15rem;
+    /* max-height: fit-content; */
+}
+
+.timelines {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.timeline-title {
+    font-weight: bold;
+    color: var(--primary-color);
+    /* font-weight: 700; */
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.timeline-item {
+    margin-bottom: 2em;
+}
+
+.timeline-item h3 {
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    position: relative;
+    clear: both;
+}
+
+.timeline-item h5 {
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-item h3::before {
+    content: "";
+    position: absolute;
+    left: -2.35em;
+    background-color: var(--graphic-color);
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 50%;
+    transform: translate(-0.5px, 0.2em);
+}
+
+.timeline-items {
+    margin: 2em;
+    padding: 0.01em 0 3em 2em;
+    border-left: 1px solid var(--graphic-color);
+}
+
+.timeline-item {
+    margin-top: -0.3em;
+}
+
+.timeline-item time {
+    /* display: block; */
+    float: left;
+    color: var(--graphic-color);
+    /* background-color: #ffebeb; */
+    /* padding: 0.2em 0.4em; */
+}
+
+.timeline-item>* {
+    margin: 1em 0;
+}
+
+.timeline-item .location {
+    float: right;
+    font-size: 0.85em;
+    font-style: italic;
+    color: var(--graphic-color);
+}
+
+.timeline-item .tasks {
+    clear: both;
+    float: left;
+    font-size: 0.85em;
+    font-style: italic;
+    color: var(--abstract-color);
+    margin: 0;
+}
+
+.timeline-item .abstract {
+    font-size: 0.85em;
+    font-style: italic;
+    color: var(--abstract-color);
+    padding: 0;
+    margin: 0;
+}
+
+.details {
+    clear: both;
+    /* padding: 3em; */
+    color: var(--abstract-color);
+}
+
+.details ul {
+    padding-right: 1em;
+    list-style-type: none;
+    list-style-position: outside;
+}
+
+.details ul li {
+    padding-left: 1em;
+    position: relative;
+}
+
+.details ul li:before {
+    color: var(--graphic-color);
+    content: '-';
+    position: absolute;
+    left: 0;
+}
+
+
 /* sotware section*/
 
 .software_item {
@@ -227,62 +423,226 @@ a {
     margin-top: 1.5rem;
 }
 
-#contact {
-    font-family: Roboto;
-    font-size: 14pt;
-    /* width: 160px; */
-    padding: 0;
+.interest {
+    gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    list-style-type: none;
+    /* Remove bullets */
+    padding: 0.2rem;
+    /* Remove padding */
+    margin: 0rem;
+    /* Remove margins */
+}
+
+.interest-item {
+    margin: 2em;
+    padding: 0.01em 0 3em 2em;
+    /* border-left: 1px solid var(--graphic-color); */
+}
+
+#rcorners-fill-023 {
+    border-radius: 25px;
+    color: var(--text-color);
+    background: var(--graphic-color);
+    padding: 5px;
+    width: 39.5px;
+    height: 30px;
+}
+
+#rcorners-fill-045 {
+    border-radius: 25px;
+    color: var(--text-color);
+    background: var(--graphic-color);
+    padding: 5px;
+    width: 43px;
+    height: 30px;
+}
+
+#rcorners-fill-067 {
+    border-radius: 25px;
+    color: var(--text-color);
+    background: var(--graphic-color);
+    padding: 5px;
+    width: 59px;
+    height: 30px;
+}
+
+#rcorners-fill-089 {
+    border-radius: 25px;
+    color: var(--text-color);
+    background: var(--graphic-color);
+    padding: 5px;
+    width: 72.5px;
+    height: 30px;
+}
+
+#rcorners-fill-low {
+    border-radius: 25px;
+    color: var(--text-color);
+    background: var(--graphic-color);
+    padding: 5px;
+    width: 78px;
+    height: 30px;
+}
+
+#rcorners-fill-mid {
+    border-radius: 25px;
+    color: var(--text-color);
+    background: var(--graphic-color);
+    padding: 5px;
+    width: 88px;
+    height: 30px;
+}
+
+#rcorners-fill-big {
+    border-radius: 25px;
+    color: var(--text-color);
+    background: var(--graphic-color);
+    padding: 5px;
+    width: 118px;
+    height: 30px;
+}
+
+#rcorners-hollow-bit {
+    border-radius: 25px;
+    border: 2px solid var(--graphic-color);
+    padding: 5px;
+    width: 70px;
+    height: 30px;
+}
+
+#rcorners-hollow-low {
+    border-radius: 25px;
+    border: 2px solid var(--graphic-color);
+    padding: 5px;
+    width: 98px;
+    height: 30px;
+}
+
+#rcorners-hollow-mid {
+    border-radius: 25px;
+    border: 2px solid var(--graphic-color);
+    padding: 5px;
+    width: 110px;
+    height: 30px;
+}
+
+#rcorners-hollow-big {
+    border-radius: 25px;
+    border: 2px solid var(--graphic-color);
+    padding: 5px;
+    width: 155px;
+    height: 30px;
+}
+
+.language {
+    gap: 3rem;
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: nowrap; */
+    list-style-type: none;
+    /* Remove bullets */
+    padding: 0.2rem;
+    /* Remove padding */
+    /* margin: 0rem;
+    Remove margins */
+}
+
+.language-bar {
+    margin: 2em;
+    padding: 0.01em 0 1em 2em;
+}
+
+.language-item1 {
+    margin-left: 15rem;
+}
+
+.language-item2 {
+    margin-left: 13rem;
+}
+
+.language-level {
+    color: var(--graphic-color);
+    font-size: 0.85em;
+    font-style: italic;
+}
+
+.language-level2 {
+    color: var(--graphic-color);
+    font-size: 0.85em;
+    font-style: italic;
+    margin-left: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+html,
+body {
     margin: 0;
-    border: none;
-  }
-  #contact li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: none no-repeat left 80%;/* left and centered */
-  }
-  #contact .email {
-    background-image: url(assets/icon/email.png);/*specify image here*/
-  }
-  #contact .phone {
-    background-image: url(assets/icon/phone.png);/*specify image here*/
-  }
-  #contact .website {
-    background-image: url(assets/icon/website.png);/*specify image here*/
-  }
-  #contact .address {
-    background-image: url(assets/icon/address.png);/*specify image here*/
-  }
-  #contact .linkedin {
-    background-image: url(assets/icon/linkedin.png);/*specify image here*/
-  }
-  #contact .github {
-    background-image: url(assets/icon/github.png);/*specify image here*/
-  }
-  #contact a {
-    /* font-size: .9em; */
+    position: relative;
+}
+
+html {
+    background-color: #f6f6f6;
+}
+
+html::before {
+    content: "";
     display: block;
-    padding: 5px 2px 1px 20px;/* change 20px to width of icon+some padding*/
-    text-decoration: none;
-    color: #666666;
-    /* width:160px; /*not needed. also should have be 156px because of the 4px left padding */
-  }
-  /* unvisited link */
-  #contact a:link {
-    color:var(--graphic-color);
-  }
-  
-  /* visited link */
-  #contact a:visited {
-    color: green;
-  }
- 
-  #contact a:hover, #contact a:focus {
-    color: #000;
-    background-color: #eeeeee;/* will hide the icon!!*/
-  }
-   
-  /* selected link */
-  #contact a:active {
-    color: blue;
-  }
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    background-color: #ffebeb;
+    top: 8em;
+    right: -8em;
+    width: 15em;
+    height: 15em;
+}
+
+body {
+    padding: 1em;
+    font-family: Arial, sans serif;
+    font-size: 14px;
+}
+
+body::before,
+body::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    background-color: #ffebeb;
+}
+
+body::before {
+    top: -10em;
+    left: -15em;
+    width: 25em;
+    height: 30em;
+}
+
+body::after {
+    top: -12em;
+    right: -12em;
+    width: 25em;
+    height: 25em;
+} */
