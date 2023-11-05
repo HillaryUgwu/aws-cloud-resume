@@ -11,7 +11,8 @@
     --text-color: #0c0c0c;
     --secondary-color: #ef13ff;
     --graphic-color: rgb(44, 191, 170);
-    --abstract-color: #898686;
+    --abstract-color: #9e9a9a;
+    --titled-color: #e6e0e0;
 }
 
 html {
@@ -110,8 +111,15 @@ a {
     display: block;
 }
 
-.counter {
+.counter1 {
     font-size: 1.4rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+}
+
+.counter {
+    font-size: 1rem;
     font-weight: 400;
     text-transform: uppercase;
     color: var(--secondary-color);
@@ -120,8 +128,88 @@ a {
 .count {
     font-size: 2rem;
     font-weight: 500;
-    color: var(--secondary-color);
+    color: white;
     text-align: center;
+    border-radius: 25px;
+    border: 3px solid var(--secondary-color);
+    padding: 20px;
+    width: 150px;
+    height: fit-content;
+    margin: auto;
+}
+
+#countdown {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    padding: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+#countdown li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 10px;
+    position: relative;
+}
+
+#countdown li:last-child {
+    margin-right: 0
+}
+
+#countdown li span {
+    display: block;
+    font-size: 20px;
+    font-weight: 100;
+    height: 32px;
+    line-height: 30px;
+    width: 50px;
+    border-radius: 10px;
+}
+
+#countdown li .days {
+    background-color: #45b29d;
+    border-top: 1px solid #6ac1b1;
+    border-left: 1px solid #6ac1b1;
+}
+
+#countdown li .hours {
+    background-color: #efc94c;
+    border-top: 1px solid #f2d470;
+    border-left: 1px solid #f2d470;
+}
+
+#countdown li .minutes {
+    background-color: #df6a27;
+    border-top: 1px solid #df6a27;
+    border-left: 1px solid #df6a27;
+}
+
+#countdown li .seconds {
+    background-color: #a98681;
+    border-top: 1px solid #a98681;
+    border-left: 1px solid #a98681;
+}
+
+#countdown li:before {
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    top: 16px;
+    width: 1px;
+}
+
+#countdown li:after {
+    content: "";
+    height: 11px;
+    right: 0;
+    position: absolute;
+    top: 16px;
+    width: 1px;
 }
 
 /* profile */
@@ -258,7 +346,7 @@ a {
 
 /* visited link */
 #contact a:visited {
-    color: green;
+    color: var(--graphic-color);
 }
 
 #contact a:hover,
@@ -308,23 +396,25 @@ a {
 }
 
 .timeline-item h3 {
-    font-size: 1em;
+    font-size: 1.5em;
     font-weight: bold;
     text-transform: uppercase;
     margin: 0;
     position: relative;
-    clear: both;
 }
 
 .timeline-item h5 {
+    font-size: 1.25em;
     padding: 0;
     margin: 0;
+    color: var(--titled-color);
+    clear: both;
 }
 
 .timeline-item h3::before {
     content: "";
     position: absolute;
-    left: -2.35em;
+    left: -1.68em;
     background-color: var(--graphic-color);
     width: 0.7em;
     height: 0.7em;
@@ -334,7 +424,7 @@ a {
 
 .timeline-items {
     margin: 2em;
-    padding: 0.01em 0 3em 2em;
+    padding: 0.01em 0 0.5em 2em;
     border-left: 1px solid var(--graphic-color);
 }
 
@@ -376,11 +466,30 @@ a {
     color: var(--abstract-color);
     padding: 0;
     margin: 0;
+    text-align: justify;
+}
+
+/* unvisited link */
+.abstract a:link {
+    color: var(--graphic-color);
+}
+
+/* visited link */
+.abstract a:visited {
+    color: var(--graphic-color);
+}
+
+.abstract a:hover,
+.abstract a:focus {
+    color: #000;
+    background-color: #eeeeee;
+    /* will hide the icon!!*/
 }
 
 .details {
+    font-size: 1.25em;
     clear: both;
-    /* padding: 3em; */
+    text-align: justify;
     color: var(--abstract-color);
 }
 
@@ -402,27 +511,6 @@ a {
     left: 0;
 }
 
-
-/* sotware section*/
-
-.software_item {
-    margin-top: 2rem;
-}
-
-.software_name {
-    font-size: 1.6rem;
-    font-weight: 700;
-}
-
-/* experience and education section*/
-.exp_item {
-    margin-top: 1.25rem;
-}
-
-.prj_item {
-    margin-top: 1.5rem;
-}
-
 .interest {
     gap: 1rem;
     display: flex;
@@ -442,99 +530,25 @@ a {
     /* border-left: 1px solid var(--graphic-color); */
 }
 
-#rcorners-fill-023 {
+#rcorners-fill {
     border-radius: 25px;
     color: var(--text-color);
     background: var(--graphic-color);
     padding: 5px;
-    width: 39.5px;
-    height: 30px;
+    width: max-content;
+    height: max-content;
+    text-align: center;
+    font-size: 1.3em;
 }
 
-#rcorners-fill-045 {
-    border-radius: 25px;
-    color: var(--text-color);
-    background: var(--graphic-color);
-    padding: 5px;
-    width: 43px;
-    height: 30px;
-}
-
-#rcorners-fill-067 {
-    border-radius: 25px;
-    color: var(--text-color);
-    background: var(--graphic-color);
-    padding: 5px;
-    width: 59px;
-    height: 30px;
-}
-
-#rcorners-fill-089 {
-    border-radius: 25px;
-    color: var(--text-color);
-    background: var(--graphic-color);
-    padding: 5px;
-    width: 72.5px;
-    height: 30px;
-}
-
-#rcorners-fill-low {
-    border-radius: 25px;
-    color: var(--text-color);
-    background: var(--graphic-color);
-    padding: 5px;
-    width: 78px;
-    height: 30px;
-}
-
-#rcorners-fill-mid {
-    border-radius: 25px;
-    color: var(--text-color);
-    background: var(--graphic-color);
-    padding: 5px;
-    width: 88px;
-    height: 30px;
-}
-
-#rcorners-fill-big {
-    border-radius: 25px;
-    color: var(--text-color);
-    background: var(--graphic-color);
-    padding: 5px;
-    width: 118px;
-    height: 30px;
-}
-
-#rcorners-hollow-bit {
+#rcorners-hollow {
     border-radius: 25px;
     border: 2px solid var(--graphic-color);
     padding: 5px;
-    width: 70px;
-    height: 30px;
-}
-
-#rcorners-hollow-low {
-    border-radius: 25px;
-    border: 2px solid var(--graphic-color);
-    padding: 5px;
-    width: 98px;
-    height: 30px;
-}
-
-#rcorners-hollow-mid {
-    border-radius: 25px;
-    border: 2px solid var(--graphic-color);
-    padding: 5px;
-    width: 110px;
-    height: 30px;
-}
-
-#rcorners-hollow-big {
-    border-radius: 25px;
-    border: 2px solid var(--graphic-color);
-    padding: 5px;
-    width: 155px;
-    height: 30px;
+    width: max-content;
+    height: max-content;
+    text-align: center;
+    font-size: 1.3em;
 }
 
 .language {
@@ -555,12 +569,18 @@ a {
     padding: 0.01em 0 1em 2em;
 }
 
+.language-item {
+    font-size: 1.3em;
+}
+
 .language-item1 {
-    margin-left: 15rem;
+    font-size: 1.3em;
+    margin-left: 10rem;
 }
 
 .language-item2 {
-    margin-left: 13rem;
+    font-size: 1.3em;
+    margin-left: 8rem;
 }
 
 .language-level {
@@ -575,7 +595,6 @@ a {
     font-style: italic;
     margin-left: 1.5rem;
 }
-
 
 
 

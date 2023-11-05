@@ -9,7 +9,6 @@
 *.pdf
 *.xlsx
 *.fig
-*.png
 *.m~
 *.lic
 *.xml
