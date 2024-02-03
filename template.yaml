@@ -15,10 +15,10 @@ Parameters:
     Type: AWS::SSM::Parameter::Value<String>
     Description: "R53 hosted zone ID used for the domain"
     Default: /HostedZoneId
-  # AcmCertificateArn:
-  #   Type: AWS::SSM::Parameter::Value<String>
-  #   Description: "ACM Certificate arn from parameter store"
-  #   Default: /AcmCertificateArn
+  AcmCertificate:
+    Type: AWS::SSM::Parameter::Value<String>
+    Description: "ACM Certificate arn from parameter store"
+    Default: /AcmCertificateArn
   WebDomainName:
     Type: AWS::SSM::Parameter::Value<String>
     Description: "Naked domain name of the website"
@@ -131,17 +131,17 @@ Resources:
         SigningBehavior: always
         SigningProtocol: sigv4
 
-  AcmCertificate:
-    Type: "AWS::CertificateManager::Certificate"
-    Properties:
-      CertificateTransparencyLoggingPreference: ENABLED
-      DomainName: !Ref WebDomainName
-      DomainValidationOptions:
-        - DomainName: !Ref WebDomainName
-          HostedZoneId: !Ref HostedZoneId
-      SubjectAlternativeNames:
-        - !Sub "*.${WebDomainName}"
-      ValidationMethod: DNS
+  # AcmCertificate:
+  #   Type: "AWS::CertificateManager::Certificate"
+  #   Properties:
+  #     CertificateTransparencyLoggingPreference: ENABLED
+  #     DomainName: !Ref WebDomainName
+  #     DomainValidationOptions:
+  #       - DomainName: !Ref WebDomainName
+  #         HostedZoneId: !Ref HostedZoneId
+  #     SubjectAlternativeNames:
+  #       - !Sub "*.${WebDomainName}"
+  #     ValidationMethod: DNS
 
   MyCloudfrontDistribution:
     Type: "AWS::CloudFront::Distribution"
