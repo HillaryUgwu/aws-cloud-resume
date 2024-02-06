@@ -10,6 +10,7 @@
     --primary-color: #ff7613;
     --text-color: #0c0c0c;
     --secondary-color: #ef13ff;
+    --bgprofile-color: rgb(46, 55, 72);
     --graphic-color: rgb(44, 191, 170);
     --abstract-color: #9e9a9a;
     --titled-color: #e6e0e0;
@@ -39,7 +40,7 @@ a {
     /* margin-top: 1rem; */
     font-size: 1.5rem;
     font-weight: 400;
-    color: var(--text-color);
+    color: var(--abstract-color);
     display: block;
     text-align: justify;
 }
@@ -98,7 +99,7 @@ a {
 
 .profile_section {
     font-family: Roboto;
-    background-color: var(--graphic-color);
+    background-color: var(--bgprofile-color);
     color: white;
 }
 
@@ -535,8 +536,9 @@ a {
 
 #rcorners-fill {
     border-radius: 25px;
-    color: var(--text-color);
-    background: var(--graphic-color);
+    color: var(--abstract-color);
+    border: 2px solid var(--graphic-color);
+    background: var(--bgprofile-color);
     padding: 5px;
     width: max-content;
     height: max-content;
