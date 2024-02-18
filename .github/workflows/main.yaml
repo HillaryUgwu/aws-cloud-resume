@@ -48,6 +48,7 @@ jobs:
          aws-region: us-east-1
      - run: sam build
      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
+     - run: sam list stack-outputs --stack-name cloudResume --output json > ./src/frontend/output.json
 
   deploy-frontend:
     runs-on: ubuntu-latest
@@ -61,3 +62,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: src/frontend
+      - run: aws s3 sync ./src/frontend s3://cv.ohary37.com
