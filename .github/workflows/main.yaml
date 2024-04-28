@@ -61,4 +61,4 @@ jobs:
           aws s3 sync ./src/frontend s3://cv.ohary37.com
           ENDPOINT=$(aws cloudformation describe-stacks --stack-name cloudResume --query "Stacks[0].Outputs[?OutputKey=='cloudResumeApi'].OutputValue" --output text)
           echo "{\"cloudResumeApi\": \"$ENDPOINT\"}" > src/frontend/output.json
-          aws s3 cp output.json s3://cv.ohary37.com/output.json
+          aws s3 cp src/frontend/output.json s3://cv.ohary37.com/output.json
