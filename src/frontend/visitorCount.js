@@ -1,4 +1,19 @@
 
+// import aws from 'https://jspm.dev/aws-sdk';
+// const ssm = new aws.SSM();
+
+// async function getApiGatewayEndpoint() {
+//   const params = {
+//     Name: '/resume/ApiGatewayEndpoint',
+//   };
+
+//   const response = await ssm.getParameter(params).promise();
+//   return response.Parameter.Value;
+// }
+
+
+
+
 // load AWS SAM Stack Outputs and grab the APIGateway endpoint URL
 const apiURL = "./output.json";
 
@@ -19,3 +34,13 @@ async function getapi(url, show) {
 
 let url = await getapi(apiURL, false);
 let res = await getapi(url[1]["OutputValue"], true);
+
+
+// // Use the endpoint
+// getApiGatewayEndpoint().then(endpoint => {
+//     apiURL = endpoint
+//     console.log(`API Gateway endpoint: ${endpoint}`);
+//   });
+
+// //   let url = await getapi(apiURL, false);
+//   let res = await getapi(apiURL, true);
