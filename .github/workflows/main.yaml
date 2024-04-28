@@ -32,11 +32,10 @@ jobs:
    needs: pytest-backend
    runs-on: ubuntu-latest
    steps:
-      - uses: |
-          actions/checkout@v2
-          actions/setup-python@v2
-          aws-actions/setup-sam@v1
-          aws-actions/configure-aws-credentials@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: aws-actions/setup-sam@v1
+      - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -44,9 +43,6 @@ jobs:
       - run: |
           sam build
           sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
-          #sam list stack-outputs --stack-name cloudResume --output json > ./src/frontend/output.json
-          #sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --outputs-file src/frontend/output.json
-          #aws s3 cp output.json s3://<your-bucket-name>/output.json
 
   deploy-frontend:
     needs: build-and-deploy-backend
