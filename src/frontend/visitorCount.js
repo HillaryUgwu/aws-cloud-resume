@@ -33,14 +33,4 @@ async function getapi(url, show) {
 }
 
 let url = await getapi(apiURL, false);
-let res = await getapi(url[1]["OutputValue"], true);
-
-
-// // Use the endpoint
-// getApiGatewayEndpoint().then(endpoint => {
-//     apiURL = endpoint
-//     console.log(`API Gateway endpoint: ${endpoint}`);
-//   });
-
-// //   let url = await getapi(apiURL, false);
-//   let res = await getapi(apiURL, true);
+let res = await getapi(url["cloudResumeApi"], true);

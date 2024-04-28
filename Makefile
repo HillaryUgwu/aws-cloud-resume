@@ -10,7 +10,8 @@ deploy-infra:
 	sam build && sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
 
 list-output:
-	sam list stack-outputs --stack-name cloudResume --output json > ./src/frontend/output.json
+	ENDPOINT=$$(aws cloudformation describe-stacks --stack-name cloudResume --query "Stacks[0].Outputs[?OutputKey=='cloudResumeApi'].OutputValue" --output text); \
+	echo "{\"cloudResumeApi\": \"$$ENDPOINT\"}" > src/frontend/output.json
 
 sync-bucket:
 	aws s3 sync ./src/frontend s3://cv.ohary37.com
