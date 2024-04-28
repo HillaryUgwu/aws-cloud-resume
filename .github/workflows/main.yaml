@@ -5,21 +5,15 @@ on:
       - main
 
 env:
-  # PYTHON_VERSION: 3.10
-  # BACKEND_PATH: src/backend
   TEST_PATH: tests/unit
-  # FRONTEND_PATH: src/frontend
   AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  # TF_LOG: INFO
-  # STATE_S3_BUCKET: ${{ secrets.BUCKET_TF_STATE }}
 
 jobs:
   pytest-backend:
     runs-on: ubuntu-latest
-    # timeout-minutes: 2
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -38,17 +32,21 @@ jobs:
    needs: pytest-backend
    runs-on: ubuntu-latest
    steps:
-     - uses: actions/checkout@v2
-     - uses: actions/setup-python@v2
-     - uses: aws-actions/setup-sam@v1
-     - uses: aws-actions/configure-aws-credentials@v1
-       with:
-         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-         aws-region: us-east-1
-     - run: sam build
-     - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
-     - run: sam list stack-outputs --stack-name cloudResume --output json > ./src/frontend/output.json
+      - uses: |
+          actions/checkout@v2
+          actions/setup-python@v2
+          aws-actions/setup-sam@v1
+          aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - run: |
+          sam build
+          sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
+          #sam list stack-outputs --stack-name cloudResume --output json > ./src/frontend/output.json
+          #sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --outputs-file src/frontend/output.json
+          #aws s3 cp output.json s3://<your-bucket-name>/output.json
 
   deploy-frontend:
     needs: build-and-deploy-backend
@@ -63,4 +61,8 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: src/frontend
-      - run: aws s3 sync ./src/frontend s3://cv.ohary37.com
+      - run: |
+          aws s3 sync ./src/frontend s3://cv.ohary37.com
+          ENDPOINT=$(aws cloudformation describe-stacks --stack-name cloudResume --query "Stacks[0].Outputs[?OutputKey=='cloudResumeApi'].OutputValue" --output text)
+          echo "{\"cloudResumeApi\": \"$ENDPOINT\"}" > src/frontend/output.json
+          aws s3 cp output.json s3://cv.ohary37.com/output.json

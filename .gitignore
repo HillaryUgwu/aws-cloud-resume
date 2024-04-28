@@ -6,7 +6,6 @@
 *.slxc
 *.csv
 *.pyc
-*.pdf
 *.xlsx
 *.fig
 *.m~

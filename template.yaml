@@ -200,13 +200,6 @@ Resources:
               OriginProtocolPolicy: http-only
         PriceClass: PriceClass_100
         Enabled: true
-  
-  ApiGatewayEndpointParameter:
-    Type: AWS::SSM::Parameter
-    Properties:
-      Name: /resume/ApiGatewayEndpoint
-      Type: String
-      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/resume/"
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function

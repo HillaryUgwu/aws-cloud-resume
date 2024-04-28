@@ -37,12 +37,15 @@ a {
 }
 
 .description {
-    /* margin-top: 1rem; */
     font-size: 1.5rem;
     font-weight: 400;
     color: var(--abstract-color);
     display: block;
     text-align: justify;
+}
+
+.description strong {
+    color: var(--titled-color);
 }
 
 .section-header {
@@ -94,7 +97,6 @@ a {
 
 .profile {
     grid-column: 1 / -1;
-    /* margin-bottom: 2rem; */
 }
 
 .profile_section {
@@ -289,7 +291,6 @@ a {
 #contact {
     font-family: Roboto;
     font-size: 14pt;
-    /* width: 160px; */
     padding: 0;
     margin: 0;
     border: none;
@@ -300,47 +301,37 @@ a {
     margin: 0;
     padding: 0;
     background: none no-repeat left 80%;
-    /* left and centered */
 }
 
 #contact .email {
     background-image: url(assets/icon/email.png);
-    /*specify image here*/
 }
 
 #contact .phone {
     background-image: url(assets/icon/phone.png);
-    /*specify image here*/
 }
 
 #contact .website {
     background-image: url(assets/icon/website.png);
-    /*specify image here*/
 }
 
 #contact .address {
     background-image: url(assets/icon/address.png);
-    /*specify image here*/
 }
 
 #contact .linkedin {
     background-image: url(assets/icon/linkedin.png);
-    /*specify image here*/
 }
 
 #contact .github {
     background-image: url(assets/icon/github.png);
-    /*specify image here*/
 }
 
 #contact a {
-    /* font-size: .9em; */
     display: block;
     padding: 5px 2px 1px 20px;
-    /* change 20px to width of icon+some padding*/
     text-decoration: none;
     color: #666666;
-    /* width:160px; /*not needed. also should have be 156px because of the 4px left padding */
 }
 
 /* unvisited link */
@@ -357,7 +348,6 @@ a {
 #contact a:focus {
     color: #000;
     background-color: #eeeeee;
-    /* will hide the icon!!*/
 }
 
 /* selected link */
@@ -374,9 +364,7 @@ a {
 .group2 {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     gap: 0.15rem;
-    /* max-height: fit-content; */
 }
 
 .timelines {
@@ -437,11 +425,8 @@ a {
 }
 
 .timeline-item time {
-    /* display: block; */
     float: left;
     color: var(--graphic-color);
-    /* background-color: #ffebeb; */
-    /* padding: 0.2em 0.4em; */
 }
 
 .timeline-item>* {
@@ -487,7 +472,6 @@ a {
 .abstract a:focus {
     color: #000;
     background-color: #eeeeee;
-    /* will hide the icon!!*/
 }
 
 .details {
@@ -508,6 +492,10 @@ a {
     position: relative;
 }
 
+.details ul li strong {
+    color: var(--titled-color);
+}
+
 .details ul li:before {
     color: var(--graphic-color);
     content: '-';
@@ -519,19 +507,14 @@ a {
     gap: 1rem;
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
     list-style-type: none;
-    /* Remove bullets */
     padding: 0.2rem;
-    /* Remove padding */
     margin: 0rem;
-    /* Remove margins */
 }
 
 .interest-item {
     margin: 2em;
     padding: 0.01em 0 3em 2em;
-    /* border-left: 1px solid var(--graphic-color); */
 }
 
 #rcorners-fill {
@@ -560,13 +543,8 @@ a {
     gap: 3rem;
     display: flex;
     flex-direction: row;
-    /* flex-wrap: nowrap; */
     list-style-type: none;
-    /* Remove bullets */
     padding: 0.2rem;
-    /* Remove padding */
-    /* margin: 0rem;
-    Remove margins */
 }
 
 .language-bar {
@@ -600,73 +578,3 @@ a {
     font-style: italic;
     margin-left: 1.5rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-
-html,
-body {
-    margin: 0;
-    position: relative;
-}
-
-html {
-    background-color: #f6f6f6;
-}
-
-html::before {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    border-radius: 50%;
-    background-color: #ffebeb;
-    top: 8em;
-    right: -8em;
-    width: 15em;
-    height: 15em;
-}
-
-body {
-    padding: 1em;
-    font-family: Arial, sans serif;
-    font-size: 14px;
-}
-
-body::before,
-body::after {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    border-radius: 50%;
-    background-color: #ffebeb;
-}
-
-body::before {
-    top: -10em;
-    left: -15em;
-    width: 25em;
-    height: 30em;
-}
-
-body::after {
-    top: -12em;
-    right: -12em;
-    width: 25em;
-    height: 25em;
-} */
