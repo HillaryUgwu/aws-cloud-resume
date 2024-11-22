@@ -129,42 +129,6 @@ See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-applica
 
 Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
 
-
-# Vscode setting.json
-```
-{
-    "workbench.colorTheme": "Predawn",
-    "workbench.iconTheme": "ayu",
-    "python.defaultInterpreterPath": "/usr/bin/python3",
-    "python.formatting.provider": "black",
-    "workbench.editor.highlightModifiedTabs": true,
-    "editor.formatOnSave": true,
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "code-runner.executorMap": {
-        "python": "$pythonPath -u $fullFileName"
-    },
-    "code-runner.clearPreviousOutput": true,
-    "code-runner.showExecutionMessage": false,
-    "code-runner.ignoreSelection": true,
-    "code-runner.saveFileBeforeRun": true,
-    "editor.quickSuggestionsDelay": 100,
-    "zenMode.centerLayout": false,
-    "zenMode.fullScreen": false,
-    "zenMode.hideLineNumbers": false,
-    "zenMode.hideTabs": false,
-    "editor.minimap.enabled": false,
-    "workbench.settings.openDefaultSettings": true,
-    "workbench.settings.editor": "json",
-    "workbench.settings.useSplitJSON": true,
-    "workbench.statusBar.feedback.visible": false,
-    "workbench.startupEditor": "newUntitledFile",
-    "[python]": {
-        "editor.formatOnType": true
-    }
-}
-```
-
 # Installing the AWS SAM CLI on Linux
 1. Download the [AWS SAM CLI .zip](https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip) file to a directory of your choice.
 2. Unzip the installation files into a directory of your choice. The following is an example, using the sam-installation subdirectory.
@@ -184,3 +148,119 @@ On successful installation, you should see output like the following:
 ```
  SAM CLI, version 1.58.0
 ```
+
+# Vscode extension.json
+
+```json
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "github.copilot",
+        "tamasfe.even-better-toml",
+        "aaron-bond.better-comments",
+        "github.vscode-github-actions",
+        "bierner.markdown-mermaid",
+        "ms-vscode-remote.remote-containers",
+    ]
+}
+```
+
+# Vscode setting.json
+## Folder setting
+```json
+{
+    // Python settings
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none"
+    },
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/src"
+    ],
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.terminal.activateEnvironment": true,
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}:${env:PYTHONPATH}"
+    },
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    // Test settings
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.cwd": "${workspaceFolder}/tests",
+    "python.testing.pytestPath": "${workspaceFolder}/.venv/bin/pytest",
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+}
+```
+
+## User setting
+```json
+{
+    // General settings
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    "window.zoomLevel": 0,
+    "window.commandCenter": false,
+    "files.exclude": {
+        ".git": true,
+        "**/.git": false
+    },
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    // Git settings
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.showActionButton": {
+        "commit": false,
+        "publish": false,
+        "sync": false
+    },
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "scminput": false,
+        "yaml": true
+    },
+    // Explorer settings
+    "explorer.excludeGitIgnore": true,
+    "explorer.autoReveal": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    // Workbench settings
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "ayu",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.settings.editor": "json",
+    // Editor settings
+    "ruff.importStrategy": "useBundled",
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always",
+        "source.fixAll": "always"
+    },
+    // "pylint.args": [
+    //     "--max-line-length=150"
+    // ],
+    "files.autoSave": "onFocusChange",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    // Debug settings
+    "debug.toolBarLocation": "docked",
+    // Terminal settings
+    "terminal.integrated.tabs.enabled": true,
+    "terminal.integrated.tabs.hideCondition": "never",
+    "terminal.integrated.tabs.location": "right",
+    // Markdown settings
+    "markdown.preview.scrollEditorWithPreview": true,
+    "markdown.preview.scrollPreviewWithEditor": true
+}
+```
+
